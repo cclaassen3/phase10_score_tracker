@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" media="screen" />
+
+<div class="new-game">
+  <div class="form">
+    <header style="font-size:26px; font-weight:bold;">Current Scores and Stats</header><br><br>
+
+      <body>
+        <form class="gameplay-form" action="play" method="POST">
+
+          <table width=100%>
+
+            <!-- names -->
+            <tr>
+              {% for player in players %}
+                <th text-align="center">{{ player }}</th>
+              {% endfor %}
+            </tr>
+
+            <!-- divider -->
+            <tr>
+              {% for i in indices %}
+                <td><hr color="lightgray"></td>
+              {% endfor %}
+            </tr>
+
+            <!-- phases -->
+            <tr>
+              {% for phasestring in phasestrings %}
+                <td text-align="center">{{ phasestring }}</td>
+              {% endfor %}
+            </tr>
+
+            <!-- divider -->
+            <tr>
+              {% for i in indices %}
+                <td><hr color="lightgray"></td>
+              {% endfor %}
+            </tr>
+
+            <!-- space -->
+            <tr>
+              {% for i in indices %}
+                <td><br></td>
+              {% endfor %}
+            </tr>
+
+            <!-- score history -->
+            {% for round in scores %}
+              <tr>
+                {% for i in indices %}
+                  <td text-align="center">{{ round[i] }}</td>
+                {% endfor %}
+              </tr>  
+            {% endfor %}
+          </table>
+
+          <br><br>
+
+          <!-- current round stats -->
+          <table width=100%>
+            <tr margin=10%>
+              {% for id in ids %}
+                <td><input type="text" name={{id}} placeholder="enter score..."/></td>
+                <td>
+                  <select name="filter" placeholder="phase?">
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </td>
+              {% endfor %}
+            </tr>
+          </table>
+
+          <br>
+          <button type="submit"> Update </button>
+          <p id="feedback"  style="color: red">{{error}}</p>
+
+        </form>
+      </body>
+
+  </div>
+</div>
+
+

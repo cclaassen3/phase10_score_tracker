@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" media="screen" />
+
+<div class="new-game">
+  <div class="form">
+    <header style="font-size:26px; font-weight:bold;">Start New Game</header><br><br>
+    <form class="new-game-form" action="new_game" method="POST">
+      <p>Enter player names below:</p><br>
+      <input type="text" name="0" placeholder=""/><br>
+      <input type="text" name="1" placeholder=""/><br>
+      <input type="text" name="2" placeholder=""/><br>
+      <input type="text" name="3" placeholder=""/><br>
+      <input type="text" name="4" placeholder=""/><br>
+      <input type="text" name="5" placeholder=""/><br>
+      <button type="submit"> Start </button>
+      <p id ="feedback" style="color: red">{{error}}</p>
+    </form>
+  </div>
+</div>
